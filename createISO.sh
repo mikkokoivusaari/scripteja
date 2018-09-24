@@ -44,9 +44,10 @@ genisoimage -r -J -b isolinux/isolinux.bin -c isolinux/boot.cat -no-emul-boot -b
 #
 chmod +w -R extracted
 rm -r extracted
+#cd ./preseedtesti
 #echo "$mountpoint"
-find *.iso -print0 | while read f; do
-udevil unmount "/media/$f"
+find *1.iso -print | while read f; do
+sudo udevil unmount "/media/$f"
 done
 echo `date` cleaning up >>output.log
 echo `date` writing iso to usb media>>output.log

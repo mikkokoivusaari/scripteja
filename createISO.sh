@@ -38,12 +38,12 @@ cd ..
 
 echo `date` rebuilding ISO
 
-genisoimage -r -J -b isolinux/isolinux.bin -c isolinux/boot.cat -no-emul-boot -boot-load-size 4 -boot-info-table -o "seeded-$targetSystem-$targetVersion".iso extracted
+#genisoimage -r -J -b isolinux/isolinux.bin -c isolinux/boot.cat -no-emul-boot -boot-load-size 4 -boot-info-table -o "seeded-$targetSystem-$targetVersion".iso extracted
 
-#xorriso -as mkisofs -o preseed-debian.9.5.0-amd64-DVD-1.iso -isohybrid-mbr /usr/lib/ISOLINUX/isohpfx.bin -c isolinux/boot.cat -b isolinux.bin -no-emul-boot -boot-load-size 4 -boot-info-table extracted
+xorriso -as mkisofs -o ./preseed-debian.9.5.0-amd64-DVD-1.iso -r -J -c isolinux/boot.cat -b isolinux/isolinux.bin -boot-load-size 4 -boot-info-table -no-emul-boot -eltorito-alt-boot -e boot/grub/efi.img -no-emul-boot extracted
 #
 chmod +w -R extracted
-rm -r extracted
+#rm -r extracted
 #cd ./preseedtesti
 #echo "$mountpoint"
 find *1.iso -print | while read f; do
